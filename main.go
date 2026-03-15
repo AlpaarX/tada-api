@@ -3,6 +3,7 @@ package main
 import (
   "net/http"
 
+  "github.com/gin-contrib/cors"
   "github.com/gin-gonic/gin"
 )
 
@@ -30,7 +31,10 @@ func main() {
   }
 
   r := gin.Default()
+  // Enable CORS for all origins
+  r.Use(cors.Default())
 
+  // Define GET endpoint to return items as JSON
   r.GET("/items", func(c *gin.Context) {
     // Return JSON response
     c.JSON(http.StatusOK, items)

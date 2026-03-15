@@ -31,16 +31,11 @@ func main() {
   }
 
   r := gin.Default()
-  // Enable CORS for all origins
   r.Use(cors.Default())
 
-  // Define GET endpoint to return items as JSON
   r.GET("/items", func(c *gin.Context) {
-    // Return JSON response
     c.JSON(http.StatusOK, items)
   })
 
-  // Start server on port 8081
-  // Server will listen on 0.0.0.0:8081 (localhost:8081 on Windows)
   r.Run(":8081")
 }
